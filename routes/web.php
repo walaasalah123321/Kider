@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KiderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::fallback(KiderController::class);
 
 Route::group(["prefix"=>"Kidder","as"=>"Kidder."],function(){
-    Route::get("/",function(){
-        return view("Kidder.index");
-    })->name("index");
-    Route::get("About",function(){
-        return view("Kidder.About");
-    })->name("about");
+    Route::get("/",[KiderController::class,'index'])->name("index");
+    Route::get("About",[KiderController::class ,"about"])->name("about");
+    Route::get("classes",[KiderController::class,"classes"])->name("classes");
+    Route::get("contact",[KiderController::class,'contact'])->name("contact");
+    Route::get("Facilities",[KiderController::class,"facilities"])->name("Facilities");
+    Route::get("teacher",[KiderController::class,"teacher"])->name("teachers");
+    Route::get("BecomeTeacher",[KiderController::class,"call"])->name("call");
+    Route::get("testimonial",[KiderController::class,"Testimonial"])->name("Testimonial");
+    Route::get("Appointment",[KiderController::class,"Appointment"])->name("Appointment");
+
+
 });
+
+
 
