@@ -1,4 +1,4 @@
-@extends("admin.layouts.index")
+@extends("admin.layouts.index",["namePage"=>"All Testmonial"])
 @section("content")
 <section class="content">
   <div class="container-fluid">
@@ -6,7 +6,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Fixed Header Table</h3>
+            <h3 class="card-title">All testimonial</h3>
 
             <div class="card-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
@@ -44,9 +44,9 @@
                     <td>{{$user->postion}}</td>
 
                     <td>{{$user->opinion}}</td>
-                  <td> <button type="button" class="btn  btn-success">edit</button></td>
+                  <td> <a  class="btn  btn-success" href="{{ route('Admin.Testmonial.edit', [$user->id]) }}">edit</a></td>
 
-                    <td> <a type="button" class="btn btn-danger" href="{{ route('Admin.Testmonial.delete', [$user->id]) }}">delete</a></td>
+                    <td> <a type="button" class="btn btn-danger" data-confirm-delete="true" href="{{ route('Admin.Testmonial.delete', [$user->id]) }}">delete</a></td>
                 </tr>  
                 @endforeach
               

@@ -1,4 +1,4 @@
-@extends("admin.layouts.index",["namePage"=>"Create Testmonial"])
+@extends("admin.layouts.index",["namePage"=>"edit Testmonial"])
 @section("content")
 <section class="content">
   <div class="container-fluid">
@@ -12,41 +12,47 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form method="POST" action="{{route('Admin.Testmonial.store')}}" enctype="multipart/form-data">
+          <form method="POST" action="{{route('Admin.Testmonial.update',[$data->id])}}" enctype="multipart/form-data">
               @csrf
+              @method("PUT")
             <div class="card-body">
               <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name"  value="{{old('name')}}">
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name"  value="{{$data->name}}">
               </div>
               @error("name")
                 <p style="color: red">{{$message}}</p>
               @enderror
               <div class="form-group">
                 <label for="exampleInputPassword1">Postion</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Position" name="postion"  value="{{old('postion')}}" >
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Position" name="postion"  value="{{$data->postion}}">
               </div>
               @error("postion")
               <p style="color: red">{{$message}}</p>
             @enderror
               <div class="form-group">
                   <label for="exampleInputPassword1">opinion</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter opinion" name="opinion"  value="{{old('opinion')}}">
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter opinion" name="opinion"  value="{{$data->opinion}}">
               </div>
               @error("opinion")
               <p style="color: red">{{$message}}</p>
               @enderror
+              
               <div class="form-group">
                 <label for="exampleInputFile">Enter Image</label>
                 <div class="input-group">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                    <input type="file" class="custom-file-input" id="exampleInputFile" name="image"  value="{{$data->image}}">
                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                   </div>
                   <div class="input-group-append">
                     <span class="input-group-text">Upload</span>
                   </div>
                 </div>
+              </div>
+              <div>
+                <img style="width:140px;height:100px" src="{{asset('admin/testimonial/images/'.$data->image)}}" alt=""> 
+
               </div>
               @error("image")
               <p style="color: red">{{$message}}</p>
