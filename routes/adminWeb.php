@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\KiderController;
 use App\Http\Controllers\TestimonalController;
+use App\Models\Appointment;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
 
@@ -13,6 +17,24 @@ Route::group(["prefix"=>"Admins","as"=>"Admin."],function(){
         Route::DELETE("delete/{id}",[TestimonalController::class,"destroy"])->name("delete");
         Route::get("edit/{id}",[TestimonalController::class,"edit"])->name("edit");
         Route::put("updata/{id}",[TestimonalController::class,"update"])->name("update");
+    });
+    Route::group(["prefix"=>"Appointment","as"=>"Appointment."],function(){
+        Route::post("store",[AppointmentController::class,"store"])->name("store");
+        Route::get("showAll",[AppointmentController::class,"index"])->name("showAll");
+        Route::DELETE("delete/{id}",[AppointmentController::class,"destroy"])->name("delete");
+        Route::get("show/{id}",[AppointmentController::class,"show"])->name("show");
+
+
+
+    });
+    Route::group(["prefix"=>"Contact","as"=>"Contact."],function(){
+        Route::post("store",[ContactUsController::class,"store"])->name("store");
+        Route::get("showAll",[ContactUsController::class,"index"])->name("showAll");
+        Route::DELETE("delete/{id}",[ContactUsController::class,"destroy"])->name("delete");
+        Route::get("show/{id}",[ContactUsController::class,"show"])->name("show");
+
+
+
     });
 
 });

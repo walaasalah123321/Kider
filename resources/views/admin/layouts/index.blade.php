@@ -79,6 +79,27 @@
               
             </ul>
           </li>
+          <li class="nav-item  {{Request()->routeIs("Admin.Appointment.showAll")?'menu-open':''}}">
+            <a href="{{route('Admin.Appointment.showAll')}}" class="nav-link  {{Request()->routeIs("Admin.Appointment.showAll")?'active':''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                All Apointment
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+           
+          </li>
+          <li class="nav-item  {{Request()->routeIs("Admin.Contact.showAll")?'menu-open':''}}">
+            <a href="{{route('Admin.Contact.showAll')}}" class="nav-link  {{Request()->routeIs("Admin.Contact.showAll")?'active':''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Contact Messages
+
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+           
+          </li>
       
         
         </ul>

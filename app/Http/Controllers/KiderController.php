@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testimonal;
 use Illuminate\Http\Request;
 
 class KiderController extends Controller
@@ -32,7 +33,8 @@ class KiderController extends Controller
         return view("Kidder.Call");
     }
     public function Testimonial()  {
-        return view("Kidder.Testimonial");
+        $data=Testimonal::get();
+        return view("Kidder.Testimonial",compact("data"));
     }
     public function Appointment()  {
         return view("Kidder.Appointment");
