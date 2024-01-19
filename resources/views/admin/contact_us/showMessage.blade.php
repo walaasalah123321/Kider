@@ -1,4 +1,4 @@
-@extends("admin.layouts.index",["namePage"=>"Show Appointment"])
+@extends("admin.layouts.index",["namePage"=>"Show Message"])
 @section("content")
 <section class="content">
   <div class="container-fluid">
@@ -8,7 +8,7 @@
         <!-- general form elements -->
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Appointment Details </h3>
+            <h3 class="card-title">Message Details </h3>
           </div>
           <!-- /.card-header -->
           <!-- form start -->

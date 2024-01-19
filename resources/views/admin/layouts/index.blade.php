@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -79,12 +82,35 @@
               
             </ul>
           </li>
+          <li class="nav-item  {{Request()->routeIs("Admin.Teacher.create","Admin.Teacher.show")?'menu-open':''}}">
+            <a href="#" class="nav-link  {{Request()->routeIs("Admin.Teacher.create","Admin.Teacher.show")?'active':''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Teacher
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('Admin.Teacher.create')}}" class="nav-link {{Request()->routeIs("Admin.Teacher.create")?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Teacher</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('Admin.Teacher.show')}}" class="nav-link {{Request()->routeIs("Admin.Teacher.show")?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Teacher</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
           <li class="nav-item  {{Request()->routeIs("Admin.Appointment.showAll")?'menu-open':''}}">
             <a href="{{route('Admin.Appointment.showAll')}}" class="nav-link  {{Request()->routeIs("Admin.Appointment.showAll")?'active':''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 All Apointment
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
            
@@ -95,7 +121,6 @@
               <p>
                 Contact Messages
 
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
            
@@ -151,5 +176,32 @@
 <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{asset('admin/dist/js/demo.js')}}"></script> --}}
+<!-- DataTables  & Plugins -->
+<script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('admin/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('admin/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('admin/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script>
+  $(function () {
+   
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

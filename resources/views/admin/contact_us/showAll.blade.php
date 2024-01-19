@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="card">
+        <div class="card" style="height:78vh">
           <div class="card-header">
             <h3 class="card-title">All Contact messages</h3>
 
@@ -25,12 +25,12 @@
             <table class="table table-head-fixed text-nowrap">
               <thead>
                 <tr>
-                  <th>user name </th>
-                  <th>user email</th>
-                  <th>subject</th>
-                  <th>message</th>
-                  <th>show</th>
-                  <th>delete</th>
+                  <th>User Name </th>
+                  <th>User Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Show</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>

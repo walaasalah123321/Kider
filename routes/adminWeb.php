@@ -3,8 +3,10 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\KiderController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TestimonalController;
 use App\Models\Appointment;
+use App\Models\Teacher;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
@@ -32,11 +34,17 @@ Route::group(["prefix"=>"Admins","as"=>"Admin."],function(){
         Route::get("showAll",[ContactUsController::class,"index"])->name("showAll");
         Route::DELETE("delete/{id}",[ContactUsController::class,"destroy"])->name("delete");
         Route::get("show/{id}",[ContactUsController::class,"show"])->name("show");
-
-
-
     });
+    
 
+    Route::group(["prefix"=>"Teacher","as"=>"Teacher."],function(){
+        Route::get("create",[TeacherController::class,"create"])->name("create");
+        Route::post("store",[TeacherController::class,"store"])->name("store");
+        Route::get("show",[TeacherController::class,"index"])->name("show");
+        Route::DELETE("delete/{id}",[TeacherController::class,"destroy"])->name("delete");
+        Route::get("edit/{id}",[TeacherController::class,"edit"])->name("edit");
+        Route::put("update/{id}",[TeacherController::class,"update"])->name("update");
+    });
 });
 
 

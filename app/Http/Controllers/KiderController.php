@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use App\Models\Testimonal;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class KiderController extends Controller
         return view("Kidder.Facilities");
     }
     public function teacher(){
-        return view("Kidder.teachers");
+        $teacher=Teacher::where("publish","1")->get();
+        return view("Kidder.teachers",compact("teacher"));
     }
     public function call(){
         return view("Kidder.Call");
