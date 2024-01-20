@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\KiderController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TestimonalController;
 use App\Models\Appointment;
@@ -45,6 +46,16 @@ Route::group(["prefix"=>"Admins","as"=>"Admin."],function(){
         Route::get("edit/{id}",[TeacherController::class,"edit"])->name("edit");
         Route::put("update/{id}",[TeacherController::class,"update"])->name("update");
     });
+    Route::group(["prefix"=>"Subjects","as"=>"Subject."],function(){
+        Route::get("create",[SubjectController::class,"create"])->name("create");
+        Route::post("store",[SubjectController::class,"store"])->name("store");
+        Route::get("show",[SubjectController::class,"index"])->name("show");
+        Route::DELETE("delete/{id}",[SubjectController::class,"destroy"])->name("delete");
+        Route::get("edit/{id}",[SubjectController::class,"edit"])->name("edit");
+        Route::put("update/{id}",[SubjectController::class,"update"])->name("update");
+    });
+
+  
 });
 
 
