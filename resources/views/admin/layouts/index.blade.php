@@ -171,7 +171,7 @@
                 <p>
                   Unread Message
                 </p></div>
-              <h5>{{Contact_us::where("read",0)->count()}}</h5>
+              <h5>{{$unread}}</h5>
               </div>
             
             </a>
