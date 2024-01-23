@@ -1,3 +1,6 @@
+@php
+  use App\Models\Contact_us;
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +18,16 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <style>
+    td,th{;
+    min-height: 100px;
+    white-space:initial;
+  }
+  td:nth-child(3),td:nth-child(4){max-width: calc(800px / 2)}
+  td:last-child,th:last-child{
+    text-align: end;
+  }
+</style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -107,6 +120,30 @@
               
             </ul>
           </li>
+          <li class="nav-item  {{Request()->routeIs("Admin.Subject.create","Admin.Subject.show")?'menu-open':''}}">
+            <a href="#" class="nav-link  {{Request()->routeIs("Admin.Subject.create","Admin.Subject.show")?'active':''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Classes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('Admin.Subject.create')}}" class="nav-link {{Request()->routeIs("Admin.Subject.create")?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Subject</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('Admin.Subject.show')}}" class="nav-link {{Request()->routeIs("Admin.Subject.show")?'active':''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Subject</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
           <li class="nav-item  {{Request()->routeIs("Admin.Appointment.showAll")?'menu-open':''}}">
             <a href="{{route('Admin.Appointment.showAll')}}" class="nav-link  {{Request()->routeIs("Admin.Appointment.showAll")?'active':''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -123,6 +160,20 @@
                 Contact Messages
 
               </p>
+            </a>
+           
+          </li>
+          <li class="nav-item  {{Request()->routeIs("Admin.Contact.unread")?'menu-open':''}}">
+            <a href="{{route('Admin.Contact.unread')}}" class="nav-link  {{Request()->routeIs("Admin.Contact.unread")?'active':''}}">
+              <div class="d-flex justify-content-between">
+               <div>
+                 <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Unread Message
+                </p></div>
+              <h5>{{Contact_us::where("read",0)->count()}}</h5>
+              </div>
+            
             </a>
            
           </li>

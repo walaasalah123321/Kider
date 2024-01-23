@@ -19,6 +19,11 @@ class ContactUsController extends Controller
         confirmDelete("delete", " you are sure Delet Record");
         return view("admin.contact_us.showAll",compact("message"));
     }
+    function unread(){
+        $message=Contact_us::where("read",0)->get();
+        confirmDelete("delete", " you are sure Delet Record");
+        return view("admin.contact_us.UnreadMessage",compact("message"));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +55,11 @@ class ContactUsController extends Controller
      */
     public function show($id)
     {
+
+
+
         $message=Contact_us::findOrFail($id);
+        $message->update(["read"=>1]);
         return view("admin.contact_us.showMessage" ,compact("message"));
 
         

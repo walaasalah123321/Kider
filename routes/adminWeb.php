@@ -12,7 +12,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
 
-Route::group(["prefix"=>"Admins","as"=>"Admin."],function(){  
+Route::group(["prefix"=>"Admins","as"=>"Admin.","middleware"=>"verified"],function(){  
     Route::group(["prefix"=>"Testmonial","as"=>"Testmonial."],function(){
         Route::get("create",[TestimonalController::class,"create"])->name("create");
         Route::post("store",[TestimonalController::class,"store"])->name("store");
@@ -35,6 +35,8 @@ Route::group(["prefix"=>"Admins","as"=>"Admin."],function(){
         Route::get("showAll",[ContactUsController::class,"index"])->name("showAll");
         Route::DELETE("delete/{id}",[ContactUsController::class,"destroy"])->name("delete");
         Route::get("show/{id}",[ContactUsController::class,"show"])->name("show");
+        Route::get("unreadMessage",[ContactUsController::class,"unread"])->name("unread");
+
     });
     
 

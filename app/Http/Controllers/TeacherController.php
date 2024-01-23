@@ -18,8 +18,8 @@ class TeacherController extends Controller
     {
         confirmDelete("delete", " you are sure Delet Record");
 
-        $teacher=Teacher::get();
-        return view("admin.Teacher.showAll",compact("teacher"));
+        $teachers=Teacher::paginate(1);
+        return view("admin.Teacher.showAll",compact("teachers"));
     }
 
     /**

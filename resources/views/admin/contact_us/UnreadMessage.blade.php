@@ -36,7 +36,7 @@
               <tbody>
     
                 @foreach ($message as $message)
-                <tr class="{{!($message->read)?'text-bold':''}}">
+                <tr class="text-bold">
                    
                     <td>{{$message->name}}</td>
                     <td>{{$message->email}}</td>
