@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\interface\KiderInterface;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Testimonal;
@@ -9,47 +10,45 @@ use Illuminate\Http\Request;
 
 class KiderController extends Controller
 {
+    public $Kider;
+    function __construct(KiderInterface $Kider)
+    {
+        $this->Kider=$Kider;
+    }
     public function __invoke()
     {
         return view("Kidder.Error404");
     }
     public function index(){
-        $teacher=Teacher::where("publish","1")->get();
-        $data=Testimonal::get();
-        $classes=Subject::where("publish",1)->get();
-
-        return view("Kidder.index",compact("teacher","data","classes"));
+       return $this->Kider->index();
     }
     public function about(){
+        return $this->Kider->about();
 
-        $teacher=Teacher::where("publish","1")->get();
-        return view("Kidder.About",compact("teacher"));
     }
     public function classes(){
-        $data=Testimonal::get();
-        $classes=Subject::where("publish",1)->get();
+        return $this->Kider->classes();
 
-        return view("Kidder.Classes",compact("data","classes"));
     }
     public function contact(){
-        return view("Kidder.Contact");
+        return $this->Kider->contact();
     }
     public function facilities(){
-        return view("Kidder.Facilities");
+        return $this->Kider->facilities();
     }
     public function teacher(){
-        $teacher=Teacher::where("publish","1")->get();
-        return view("Kidder.teachers",compact("teacher"));
+        return $this->Kider->teacher();
+
     }
     public function call(){
-        return view("Kidder.Call");
+        return $this->Kider->call();
     }
     public function Testimonial()  {
-        $data=Testimonal::get();
-        return view("Kidder.Testimonial",compact("data"));
+        
+        return $this->Kider->Testimonial();
     }
     public function Appointment()  {
-        return view("Kidder.Appointment");
+        return $this->Kider->Appointment();
     }
 
 }
