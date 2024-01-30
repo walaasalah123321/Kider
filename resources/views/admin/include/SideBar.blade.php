@@ -22,7 +22,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item  {{Request()->routeIs("Admin.Testmonial.create","Admin.Testmonial.show")?'menu-open':''}}">
             <a href="#" class="nav-link  {{Request()->routeIs("Admin.Testmonial.create","Admin.Testmonial.show")?'active':''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Testimonil
                 <i class="right fas fa-angle-left"></i>
@@ -44,9 +44,10 @@
               
             </ul>
           </li>
-          <li class="nav-item  {{Request()->routeIs("Admin.Teacher.create","Admin.Teacher.show")?'menu-open':''}}">
-            <a href="#" class="nav-link  {{Request()->routeIs("Admin.Teacher.create","Admin.Teacher.show")?'active':''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item  {{Request()->routeIs("*.Teacher.*")?'menu-open':''}}">
+            <a href="#" class="nav-link  {{Request()->routeIs("*.Teacher.*")?'active':''}}">
+              
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
                 Teacher
                 <i class="right fas fa-angle-left"></i>
@@ -56,6 +57,7 @@
               <li class="nav-item">
                 <a href="{{route('Admin.Teacher.create')}}" class="nav-link {{Request()->routeIs("Admin.Teacher.create")?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
+                 
                   <p>Add Teacher</p>
                 </a>
               </li>
@@ -68,9 +70,9 @@
               
             </ul>
           </li>
-          <li class="nav-item  {{Request()->routeIs("Admin.Subject.create","Admin.Subject.show")?'menu-open':''}}">
-            <a href="#" class="nav-link  {{Request()->routeIs("Admin.Subject.create","Admin.Subject.show")?'active':''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item  {{Request()->routeIs("*.Subject.*")?'menu-open':''}}">
+            <a href="#" class="nav-link  {{Request()->routeIs("*.Subject.*")?'active':''}}">
+              <i class="nav-icon fas fa-table"></i>
               <p>
                 Classes
                 <i class="right fas fa-angle-left"></i>
@@ -94,7 +96,8 @@
           </li>
           <li class="nav-item  {{Request()->routeIs("Admin.Appointment.showAll")?'menu-open':''}}">
             <a href="{{route('Admin.Appointment.showAll')}}" class="nav-link  {{Request()->routeIs("Admin.Appointment.showAll")?'active':''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon far fa-calendar-alt"></i>
+
               <p>
                 All Apointment
               </p>
@@ -103,7 +106,8 @@
           </li>
           <li class="nav-item  {{Request()->routeIs("Admin.Contact.showAll")?'menu-open':''}}">
             <a href="{{route('Admin.Contact.showAll')}}" class="nav-link  {{Request()->routeIs("Admin.Contact.showAll")?'active':''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon far fa-envelope"></i>
+
               <p>
                 Contact Messages
 
@@ -115,7 +119,7 @@
             <a href="{{route('Admin.Contact.unread')}}" class="nav-link  {{Request()->routeIs("Admin.Contact.unread")?'active':''}}">
               <div class="d-flex justify-content-between">
                <div>
-                 <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon far fa-envelope"></i>
                 <p>
                   Unread Message
                 </p></div>
