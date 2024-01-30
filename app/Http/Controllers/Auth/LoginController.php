@@ -53,7 +53,7 @@ class LoginController extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect()->route("login");
+            : redirect()->route("Kidder.index");
     }
 
 }

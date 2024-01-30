@@ -1,14 +1,20 @@
-@extends('layouts.app',["title"=>"Register"])
+@extends("AdminAuth.app")
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center align-items-center " style="height: 88vh">
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    @if (Session("error"))
+                    <div class="alert alert-danger">
+                        {{Session("error")}}
+                    </div>
+                        
+                    @endif
+                    <form method="POST" action="{{ route('Admin.store') }}">
                         @csrf
 
                         <div class="row mb-3">

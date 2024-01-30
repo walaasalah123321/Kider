@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav mx-auto">
+        <div class="navbar-nav ms-auto">
             <a href="{{route('Kidder.index')}}" class="nav-item nav-link {{Request()->routeIs("Kidder.index")?'active':''}}">Home</a>
             <a href="{{route('Kidder.about')}}" class="nav-item nav-link {{Request()->routeIs("Kidder.about")?'active':''}}">About Us</a>
             <a href="{{route('Kidder.classes')}}" class="nav-item nav-link {{Request()->routeIs("Kidder.classes")?'active':''}}">Classes</a>
@@ -21,7 +21,34 @@
                 </div>
             </div>
             <a href="{{route("Kidder.contact")}}" class="nav-item nav-link {{Request()->routeIs("Kidder.contact")?'active':''}}"">Contact Us</a>
+            @guest
+                 @if (Route::has('login'))
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                @endif
+        
+                @if (Route::has('register'))
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                @endif
+                @else
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+        
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+        
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                
+        @endguest
         </div>
-        <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Join Us<i class="fa fa-arrow-right ms-3"></i></a>
+        
     </div>
+    
 </nav>

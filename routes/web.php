@@ -17,21 +17,21 @@ use App\Http\Controllers\TestimonalController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::fallback(KiderController::class);
 
-Route::group(["prefix"=>"Kidder","as"=>"Kidder."],function(){
-    Route::get("/",[KiderController::class,'index'])->name("index");
-    Route::get("About",[KiderController::class ,"about"])->name("about");
-    Route::get("classes",[KiderController::class,"classes"])->name("classes");
-    Route::get("contact",[KiderController::class,'contact'])->name("contact");
-    Route::get("Facilities",[KiderController::class,"facilities"])->name("Facilities");
-    Route::get("teacher",[KiderController::class,"teacher"])->name("teachers");
-    Route::get("BecomeTeacher",[KiderController::class,"call"])->name("call");
-    Route::get("testimonial",[KiderController::class,"Testimonial"])->name("Testimonial");
-    Route::get("Appointment",[KiderController::class,"Appointment"])->name("Appointment");
+Route::group(["prefix"=>"Kidder","as"=>"Kidder.","controller"=>KiderController::class],function(){
+    Route::get("/",'index')->name("index");
+    Route::get("About" ,"about")->name("about");
+    Route::get("classes","classes")->name("classes");
+    Route::get("contact",'contact')->name("contact");
+    Route::get("Facilities","facilities")->name("Facilities");
+    Route::get("teacher","teacher")->name("teachers");
+    Route::get("BecomeTeacher","call")->name("call");
+    Route::get("testimonial","Testimonial")->name("Testimonial");
+    Route::get("Appointment","Appointment")->name("Appointment");
 
 
 });
